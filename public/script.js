@@ -2,7 +2,9 @@ console.log('js sourced');
 $(document).ready(function(){
   console.log('jq sourced');
 var sendRange =  function(){
-  objectToSend = $('#rangeNum').val();
+  objectToSend = {
+    val: $('#rangeNum').val()
+  };
   console.log(objectToSend);
   $.ajax( {
     type: 'POST',

@@ -29,6 +29,7 @@ app.post('/testPost', urlEncodedParser, function (req, res){
 
   res.send(randomReturn);
   maxRange.push(req.body);
+  console.log(maxRange);
 });
 
 
