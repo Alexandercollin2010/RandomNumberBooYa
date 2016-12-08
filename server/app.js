@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 var urlEncodedParser = bodyParser.urlencoded({extended:false});
 var port = process.env.PORT || 3000;
 
+var maxRange = [];
+
 app.use(bodyParser.json());
 
 app.listen(port, function(req, res){
@@ -18,8 +20,15 @@ app.get ('/', function(req, res){
 }); // end base url
 
 //testPost
-app.post('/textPost', urlEncodedParser, function (req, res){
+app.post('/testPost', urlEncodedParser, function (req, res){
   console.log('testPost url hit, req.body:', req.body);
+
+  var randomReturn = {
+    yes: 'In the test post'
+  };
+
+  res.send(randomReturn);
+  maxRange.push(req.body);
 });
 
 
