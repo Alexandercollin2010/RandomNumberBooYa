@@ -7,6 +7,10 @@ $(document).ready(function(){
     rangeN.length = 0;
     $('#guessCount').html('');
     $('#guessRDisplay').html('');
+    // $('#highLow1').html('');
+    // $('#highLow2').html('');
+    // $('#highLow3').html('');
+    // $('#highLow4').html('');
   });
 var guesses = [];
 var number = [];
@@ -60,6 +64,7 @@ console.log('This is in rangeN:', rangeN);
       playerGuesses();
       guessCounter();
       clearInputs();
+      // hiLow();
       console.log(guesses.length);
     });// end on click function
 
@@ -89,8 +94,44 @@ var range = function () {
       });
 
     };
+    // var hiLow = function(){
+    //   console.log('in hiLow');
+    //   for (var i = 0; i < guesses.length; i++) {
+    //
+    //     if(guesses[i].playerOne<number[0]){
+    //       $('#highLow1').html('<p>' + 'Player 1, your guess is low ' + '</p>');
+    //     }else{
+    //       $('#highLow1').html('<p>' + 'Player 1, your guess is high ' + '</p>');
+    //     }
+    //     else if(guesses[i].playerTwo<number[0]){
+    //       $('#highLow2').html('<p>' + 'Player 2, your guess is low ' + '</p>');
+    //     }else{
+    //       $('#highLow2').html('<p>' + 'Player 2, your guess is high ' + '</p>');
+    //     }
+    //     else if(guesses[i].playerThree<number[0]){
+    //       $('#highLow3').html('<p>' + 'Player 3, your guess is low ' + '</p>');
+    //     }else{
+    //       $('#highLow3').html('<p>' + 'Player 3, your guess is high ' + '</p>');
+    //     }
+    //     else if(guesses[i].playerFour<number[0]){
+    //       $('#highLow4').html('<p>' + 'Player 4, your guess is low ' + '</p>');
+    //     }else{
+    //       $('#highLow4').html('<p>' + 'Player 4, your guess is high ' + '</p>');
+    //     }
+    // }
+    // };
+
+    var clearInputs = function(){
+      $('#playerOne').val('');
+     $('#playerTwo').val('');
+        $('#playerThree').val('');
+       $('#playerFour').val('');
+       $('#rangeNum').val('');
+       //$('#guessCount').html('');
+    };
+
     var compareNumber = function(){
-      console.log('in compareNumber');
+
       for (var i = 0; i < guesses.length; i++) {
 
         if(guesses[i].playerOne==number[0]){
@@ -103,15 +144,6 @@ var range = function () {
           alert('Player Four you won!');
       }
     }
-    };
-
-    var clearInputs = function(){
-      $('#playerOne').val('');
-     $('#playerTwo').val('');
-        $('#playerThree').val('');
-       $('#playerFour').val('');
-       $('#rangeNum').val('');
-       //$('#guessCount').html('');
     };
 
 });// end document ready
