@@ -7,6 +7,7 @@ var port = process.env.PORT || 3000;
 
 var maxRange = [];
 var playerGuess = [];
+var winningNum = [];
 
 app.use(bodyParser.json());
 
@@ -20,7 +21,13 @@ app.get ('/', function(req, res){
   res.sendFile(path.resolve('public/index.html'));
 }); // end base url
 
-//testPost
+//send winningNum to client side for comparison
+app.get('/winningNum', function(req, res){
+  console.log('test winningNum');
+  res.send(winningNum);
+});
+
+// receiving the max range from the client.
 app.post('/testPost', urlEncodedParser, function (req, res){
   console.log('testPost url hit, req.body:', req.body);
   //var min = 1;
@@ -31,15 +38,30 @@ app.post('/testPost', urlEncodedParser, function (req, res){
   // var randomIzer = function(){
   //   parseInt(Math.random()*maxRange.val+1);
   }
-  console.log('in var max:', randomIzer());
+
   var randomReturn = {
     yes: 'In the test post'
   };
-
   res.send(randomReturn);
-  maxRange.push(req.body.val);
-  console.log(maxRange);
+  maxRange.push(req.body);
+
+  winningNum.push(randomIzer());
+  console.log(winningNum);
 });
+
+// receiving the player guesses from the client.
+  app.post('/playerGuesses', urlEncodedParser, function (req, res){
+    console.log('testPost url hit, req.body:', req.body);
+
+    playerGuess.push(req.body);
+    console.log(playerGuess);
+    var randomReturn = {
+      yes: 'In the playerGuesses'
+    };
+    res.send(randomReturn);
+  });
+
+
 
 
 app.use (express.static('public'));

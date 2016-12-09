@@ -6,7 +6,7 @@ $(document).ready(function(){
 var sendRange =  function(){
   objectToSend = {
     val: $('#rangeNum').val(),
-    
+
 };
   console.log(objectToSend);
   $.ajax( {
@@ -21,6 +21,7 @@ var sendRange =  function(){
 
   $('#startGame').on('click', function(){
     sendRange();
+    getNumber();
   });// end on click function
 
   var playerGuesses =  function(){
@@ -34,7 +35,7 @@ var sendRange =  function(){
     console.log(objectToSend);
     $.ajax( {
       type: 'POST',
-      url: '/testPost',
+      url: '/playerGuesses',
       data: objectToSend,
       success: function(response){
         console.log('Got it: ', response);
@@ -45,4 +46,31 @@ var sendRange =  function(){
       playerGuesses();
     });// end on click function
 
+    //ajax call to receive winningNum
+    var getNumber = function(){
+      $.ajax({
+        type: 'GET',
+        url: '/winningNum',
+        success: function(response){
+          console.log('got number:', response);
+
+        }
+
+      });
+
+    };
+    var compareNumber = function(){
+      for (var i = 0; i < playerGuess.length; i++) {
+
+        if(playerGuess[i].playerOne==maxRange.val){
+          alert('you won!');
+      }  else if (playerGuess[i].playerTwo==maxRange.val) {
+          alert('you won!');
+      } else if (playerGuess[i].playerThree==maxRange.val) {
+          alert('you won!');
+      } else if (playerGuess[i].playerFour==maxRange.val) {
+          alert('you won!');
+      }
+    }
+    };
 });// end document ready
