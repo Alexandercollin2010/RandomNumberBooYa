@@ -25,6 +25,7 @@ app.get ('/', function(req, res){
 app.get('/winningNum', function(req, res){
   console.log('test winningNum');
   res.send(winningNum);
+  winningNum.length = 0;
 });
 
 // receiving the max range from the client.
@@ -35,9 +36,7 @@ app.post('/testPost', urlEncodedParser, function (req, res){
   //function randomIzer is not functional
   function randomIzer(){
     return Math.floor((Math.random()* max) + 1);
-  // var randomIzer = function(){
-  //   parseInt(Math.random()*maxRange.val+1);
-  }
+}
 
   var randomReturn = {
     yes: 'In the test post'
