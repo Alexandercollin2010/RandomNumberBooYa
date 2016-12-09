@@ -22,15 +22,15 @@ app.get ('/', function(req, res){
 //testPost
 app.post('/testPost', urlEncodedParser, function (req, res){
   console.log('testPost url hit, req.body:', req.body);
-  var min = 1;
-  var max = req.body.val;
+  //var min = 1;
+  var max = Number(req.body.val);
   //function randomIzer is not functional
-  function randomIzer(min, max){
-    return Math.floor(Math.random()*(max-min+1))+min;
+  function randomIzer(){
+    return Math.floor((Math.random()* max) + 1);
   // var randomIzer = function(){
   //   parseInt(Math.random()*maxRange.val+1);
   }
-  console.log('in var max:', max );
+  console.log('in var max:', randomIzer());
   var randomReturn = {
     yes: 'In the test post'
   };
