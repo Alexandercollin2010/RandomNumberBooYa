@@ -6,6 +6,7 @@ var urlEncodedParser = bodyParser.urlencoded({extended:false});
 var port = process.env.PORT || 3000;
 
 var maxRange = [];
+var playerGuess = [];
 
 app.use(bodyParser.json());
 
@@ -36,7 +37,7 @@ app.post('/testPost', urlEncodedParser, function (req, res){
   };
 
   res.send(randomReturn);
-  maxRange.push(req.body);
+  maxRange.push(req.body.val);
   console.log(maxRange);
 });
 
