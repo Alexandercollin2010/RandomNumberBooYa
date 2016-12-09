@@ -1,0 +1,29 @@
+h1{
+  text-align: center;
+  font-style: serif;
+  font-size: 50px;
+  padding-bottom: 40px;
+}
+
+#playArea {
+  margin-top: 200px;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding-left: 30px;
+  padding-top: 50px;
+  padding-bottom: 75px;
+  background-color: antiquewhite;
+}
+
+body {
+    background-image: url('http://canada.cochrane.org/sites/canada.cochrane.org/files/public/uploads/Website%20images/numbers-graphic1.gif');
+
+};
+
+.displayInLine{
+  display: inline-block;
+};
+
+#restartGame{
+  align-items: center;
+};

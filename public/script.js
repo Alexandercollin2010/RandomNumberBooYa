@@ -1,7 +1,8 @@
 console.log('js sourced');
 $(document).ready(function(){
   console.log('jq sourced');
-
+var guesses = [];
+var number = [];
 
 var sendRange =  function(){
   objectToSend = {
@@ -31,7 +32,8 @@ var sendRange =  function(){
       playerTwo: $('#playerTwo').val(),
       playerThree: $('#playerThree').val(),
       playerFour: $('#playerFour').val(),
-  };
+    };
+    guesses.push(objectToSend);
     console.log(objectToSend);
     $.ajax( {
       type: 'POST',
@@ -44,6 +46,7 @@ var sendRange =  function(){
     };// end sendRange
     $('#submitGuess').on('click', function(){
       playerGuesses();
+      compareNumber();
     });// end on click function
 
     //ajax call to receive winningNum
@@ -53,23 +56,23 @@ var sendRange =  function(){
         url: '/winningNum',
         success: function(response){
           console.log('got number:', response);
-
+          number.push(response);
         }
 
       });
 
     };
     var compareNumber = function(){
-      for (var i = 0; i < playerGuess.length; i++) {
+      for (var i = 0; i < guesses.length; i++) {
 
-        if(playerGuess[i].playerOne==maxRange.val){
-          alert('you won!');
-      }  else if (playerGuess[i].playerTwo==maxRange.val) {
-          alert('you won!');
-      } else if (playerGuess[i].playerThree==maxRange.val) {
-          alert('you won!');
-      } else if (playerGuess[i].playerFour==maxRange.val) {
-          alert('you won!');
+        if(guesses[i].playerOne== number[0]){
+          alert(' Player One you won!');
+      }  else if (guesses[i].playerTwo==number[0]) {
+          alert('Player Two you won!');
+      } else if (guesses[i].playerThree==number[0]) {
+          alert('Player Three you won!');
+      } else if (guesses[i].playerFour==number[0]) {
+          alert('Player Four you won!');
       }
     }
     };
